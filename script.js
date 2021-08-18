@@ -5,7 +5,7 @@ function computerPlay() {
   return choosed
 }
 
-function getResult(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if (computerSelection == options.indexOf(playerSelection)) {
         return("It's a tie!")
     }
@@ -18,11 +18,12 @@ function getResult(playerSelection, computerSelection) {
     else return("Try again")
 }
 
+function game() {
+    for (let index = 0; index < 5; index++) {
+        playerSelection = prompt("Your turn").toLowerCase()
+        computerSelection = computerPlay()
+        
+        console.log(playRound(playerSelection, computerSelection))
+        console.log(playerSelection,options[computerSelection])
+}}
 
-
-for (let index = 0; index < 5; index++) {
-    playerSelection = prompt("Your turn").toLowerCase()
-    computerSelection = computerPlay()
-    console.log(getResult(playerSelection, computerSelection))
-    console.log(playerSelection,options[computerSelection])
-}
