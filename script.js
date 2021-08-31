@@ -1,4 +1,5 @@
 let options = ["rock", "paper", "scissors"]
+let messages = ["It's a win!", "It's a loss!","It's a tie!", "Invalid, try again"]
 
 /**
  *
@@ -13,28 +14,43 @@ function computerPlay() {
  * 
  * @param {string} playerSelection 
  * @param {int} computerSelection 
- * @returns {string} result of the round
+ * @returns {int} Number corresponding to the message in [messages] 
+ * @returns {int} Points gained by player
+ * @returns {int} Points gained by computer
  */
 function playRound(playerSelection, computerSelection) {
     /*playerSelection is turned to a number between 0 and 2, if commputerSelection is the same, it's a tie, if it is the next, it's a lost, and if it is the previous, it's a win :)*/
+    //Tie
     if (computerSelection == options.indexOf(playerSelection)) {
-        return("It's a tie!")
+        return(2,0,0)
     }
+    //Player lost
     else if (computerSelection == (options.indexOf(playerSelection)+1)%3) {
-        return("You lost!")
+        return(1,0,1)
     }
+    //Player wins
     else if (computerSelection == (options.indexOf(playerSelection)-1)%3) {
-        return("It's a win!")
+        return(0,1,0)
     }
-    else return("Try again")
+    //Invalid 
+    else return(3,0,0)
 }
 
 function game() {
+    let playerScore = 0
+    let computerScore = 0
     for (let index = 0; index < 5; index++) {
         playerSelection = prompt("Your turn").toLowerCase()
         computerSelection = computerPlay()
-        
-        console.log(playRound(playerSelection, computerSelection))
+        message,pPlayer,pComputer=playRound(playerSelection, computerSelection)
+        playerScore += pPlayer
+        computerScore += pComputer
+
+        if (message >= 2) {
+            index--
+        }
+
+        console.log(messages[message])
         console.log(playerSelection,options[computerSelection])
 }}
 
