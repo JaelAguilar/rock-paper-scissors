@@ -17,13 +17,20 @@ body {
 
 
 .option, #computer-choice {
+    display:flex;
+    justify-content:center;
+    align-items:center;
   background-color: red;
-  margin: 10px 5px;
-  height: 100%;
+  margin: 20px;
+  height: 25%;
   text-align: center;
   line-height: 100%;
 }
 
 #computer-choice{
     height:30vw;
+}
+
+.option-symbol{
+    height:70%;
 }

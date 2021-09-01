@@ -1,5 +1,7 @@
 let options = ["rock", "paper", "scissors"]
-let messages = ["It's a win!", "It's a loss!","It's a tie!", "Invalid, try again"]
+let messages = ["It's a win!", "It's a loss!", "It's a tie!", "Something went wrong"]
+
+
 
 /**
  *
@@ -10,6 +12,8 @@ function computerPlay() {
   choosed = Math.floor(Math.random() * 3)
   return choosed
 }
+
+
 /**
  * 
  * @param {string} playerSelection 
