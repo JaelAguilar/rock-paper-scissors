@@ -6,7 +6,7 @@ body {
   align-items: center;
 }
 
-#options {
+#options, #computer {
   display: flex;
   flex-direction: column;
   height: 90vh;
@@ -14,10 +14,16 @@ body {
   background-color: blue;
 }
 
-.option {
+
+
+.option, #computer-choice {
   background-color: red;
   margin: 10px 5px;
   height: 100%;
   text-align: center;
   line-height: 100%;
+}
+
+#computer-choice{
+    height:30vw;
 }
