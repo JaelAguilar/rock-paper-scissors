@@ -1,7 +1,18 @@
 let options = ["rock", "paper", "scissors"]
 let messages = ["It's a win!", "It's a loss!", "It's a tie!", "Something went wrong"]
 
+//Event listener to the buttons
+userOptions = [...document.getElementsByClassName("option")];
+userOptionsArray = Array.from(userOptions);
+console.log(userOptions);
+console.log(userOptionsArray)
 
+userOptions.forEach(option => {
+    option.addEventListener('click', () => { console.log("clicked", option) }
+    
+    )
+    console.log(option)
+});
 
 /**
  *
