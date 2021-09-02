@@ -3,16 +3,31 @@ let messages = ["It's a win!", "It's a loss!", "It's a tie!", "Something went wr
 
 //Event listener to the buttons
 userOptions = [...document.getElementsByClassName("option")];
-userOptionsArray = Array.from(userOptions);
-console.log(userOptions);
-console.log(userOptionsArray)
 
 userOptions.forEach(option => {
-    option.addEventListener('click', () => { console.log("clicked", option) }
+    option.addEventListener('click', () => {
+        console.log("clicked", option.id, options.indexOf(option.id))
+        chooseOption(option.id);
+    }
     
     )
-    console.log(option)
 });
+
+function chooseOption(choosed) {
+    userOptions.forEach(option => {
+        console.log(option.id, choosed);
+        console.log(option.id === choosed);
+        if (option.id !== choosed) {
+            option.style.display = "none";
+        }
+    })
+    userOptions.forEach(option => {
+        if (option !== choosed) {
+            option.class="choosed"
+        }
+    })
+    
+}
 
 /**
  *
