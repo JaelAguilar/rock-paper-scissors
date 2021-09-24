@@ -1,5 +1,6 @@
 let options = ["rock", "paper", "scissors"]
 let messages = ["It's a win!", "It's a loss!", "It's a tie!", "Something went wrong"]
+let playerSelection;
 
 //Event listener to the buttons
 userOptions = [...document.getElementsByClassName("option")];
@@ -8,11 +9,17 @@ userOptions.forEach(option => {
     option.addEventListener('click', () => {
         console.log("clicked", option.id, options.indexOf(option.id))
         chooseOption(option.id);
+        game();
     }
     
     )
 });
 
+/**
+ *Hides the options that were not selected and saves the current selected
+ *
+ * @param {string} choosed
+ */
 function chooseOption(choosed) {
     userOptions.forEach(option => {
         console.log(option.id, choosed);
@@ -20,10 +27,9 @@ function chooseOption(choosed) {
         if (option.id !== choosed) {
             option.style.display = "none";
         }
-    })
-    userOptions.forEach(option => {
-        if (option !== choosed) {
-            option.class="choosed"
+        else {
+            playerSelection = options.indexOf(option.id);
+            console.log(playerSelection);
         }
     })
     
@@ -51,15 +57,15 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     /*playerSelection is turned to a number between 0 and 2, if commputerSelection is the same, it's a tie, if it is the next, it's a lost, and if it is the previous, it's a win :)*/
     //Tie
-    if (computerSelection == options.indexOf(playerSelection)) {
+    if (computerSelection == playerSelection){
         return(2,0,0)
     }
     //Player lost
-    else if (computerSelection == (options.indexOf(playerSelection)+1)%3) {
+    else if (computerSelection == (playerSelection+1)%3) {
         return(1,0,1)
     }
     //Player wins
-    else if (computerSelection == (options.indexOf(playerSelection)-1)%3) {
+    else if (computerSelection == (playerSelection-1)%3) {
         return(0,1,0)
     }
     //Invalid 
@@ -67,8 +73,23 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let playerScore = 0
-    let computerScore = 0
+    let playerScore = 0;
+    let computerScore = 0;
+    while (playerScore < 5 && computerScore < 5) {
+        computerSelection = computerPlay();
+        let messageIndex, playerPoint, computerPoint = playRound(playerSelection, computerSelection);
+        playerScore += playerPoint;
+        computerScore += computerPoint;
+        console.log('..',messages[messageIndex]);
+        console.log(messageIndex);
+        console.log(playerSelection, options[computerSelection]);
+    }
+}
+
+
+
+
+  /*
     for (let index = 0; index < 5; index++) {
         playerSelection = prompt("Your turn").toLowerCase()
         computerSelection = computerPlay()
@@ -82,5 +103,6 @@ function game() {
 
         console.log(messages[message])
         console.log(playerSelection,options[computerSelection])
-}}
+}*/
+
 
