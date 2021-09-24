@@ -4,9 +4,10 @@ html {
 body {
   display: flex;
   align-items: center;
+  justify-content:center;
 }
 
-#options, #computer {
+.options {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +19,7 @@ body {
 
 
 
-.option, #computer-choice {
+.option.player, #computer-choice {
     display:flex;
     justify-content:center;
     align-items:center;
@@ -33,10 +34,14 @@ body {
   /*line-height: 100%;*/
 }
 
-#computer-choice{
+/*#computer-choice{
     height:30vw;
-}
+}*/
 
 .option-symbol{
     height:70%;
+}
+
+h1{
+  color:white;
 }
