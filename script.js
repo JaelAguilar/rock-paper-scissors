@@ -22,14 +22,12 @@ userOptions.forEach(option => {
  */
 function chooseOption(choosed) {
     userOptions.forEach(option => {
-        console.log(option.id, choosed);
-        console.log(option.id === choosed);
         if (option.id !== choosed) {
             option.style.display = "none";
         }
         else {
-            playerSelection = options.indexOf(option.id);
-            console.log(playerSelection);
+            indexPlayerSelection = options.indexOf(option.id);
+            
         }
     })
     
@@ -48,7 +46,7 @@ function computerPlay() {
 
 /**
  * 
- * @param {string} playerSelection 
+ * @param {int} playerSelection 
  * @param {int} computerSelection 
  * @returns {int} Number corresponding to the message in [messages] 
  * @returns {int} Points gained by player
@@ -57,33 +55,46 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     /*playerSelection is turned to a number between 0 and 2, if commputerSelection is the same, it's a tie, if it is the next, it's a lost, and if it is the previous, it's a win :)*/
     //Tie
-    if (computerSelection == playerSelection){
-        return(2,0,0)
+    if (computerSelection == playerSelection) {
+        console.log(messages[2]);
+        return { messageIndex:2, playerPoint:0, computerPoint:0};
     }
     //Player lost
-    else if (computerSelection == (playerSelection+1)%3) {
-        return(1,0,1)
+    else if (computerSelection == (playerSelection + 4) % 3) {
+
+        return {messageIndex:1, playerPoint:0, computerPoint:1};
     }
     //Player wins
-    else if (computerSelection == (playerSelection-1)%3) {
-        return(0,1,0)
+    else if (computerSelection == (playerSelection + 2) % 3) {
+
+        return {messageIndex:0, playerPoint:1, computerPoint:0};
     }
     //Invalid 
-    else return(3,0,0)
+        
+    else {
+
+        return {messageIndex:3, playerPoint:0, computerPoint:0};
+    }
 }
 
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    
+
     while (playerScore < 5 && computerScore < 5) {
-        computerSelection = computerPlay();
-        let messageIndex, playerPoint, computerPoint = playRound(playerSelection, computerSelection);
-        playerScore += playerPoint;
-        computerScore += computerPoint;
-        console.log('..',messages[messageIndex]);
-        console.log(messageIndex);
-        console.log(playerSelection, options[computerSelection]);
+        indexComputerSelection = computerPlay();
+        console.log("computer selection: ", indexComputerSelection);
+        console.log("player selection:", indexPlayerSelection);
+        let gameResult= playRound(indexPlayerSelection, indexComputerSelection);
+
+        playerScore += gameResult.playerPoint;
+        computerScore += gameResult.computerPoint;
+        console.log("player: ", playerScore);
+        console.log("computer: ", computerScore);
+
+        console.log('..',messages[gameResult.messageIndex]);
+        console.log(gameResult.messageIndex);
+        console.log(gameResult.playerPoint, options[gameResult.computerPoint])
     }
 }
 
