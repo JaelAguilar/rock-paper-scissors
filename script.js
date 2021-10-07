@@ -75,6 +75,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    
     while (playerScore < 5 && computerScore < 5) {
         computerSelection = computerPlay();
         let messageIndex, playerPoint, computerPoint = playRound(playerSelection, computerSelection);
