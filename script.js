@@ -1,6 +1,8 @@
 let options = ["rock", "paper", "scissors"]
 let messages = ["It's a win!", "It's a loss!", "It's a tie!", "Something went wrong"]
 let playerSelection;
+let playerScore = 0
+let computerScore = 0
 
 //Event listener to the buttons
 userOptions = [...document.getElementsByClassName("option")];
@@ -9,7 +11,7 @@ userOptions.forEach(option => {
     option.addEventListener('click', () => {
         console.log("clicked", option.id, options.indexOf(option.id))
         chooseOption(option.id);
-        game();
+        game()
     }
     
     )
@@ -78,21 +80,22 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
 
-    while (playerScore < 5 && computerScore < 5) {
+    if (playerScore >= 5 || computerScore >= 5) {
+        console.log("end, somebody won")
+    }
+    else {
         indexComputerSelection = computerPlay();
         console.log("computer selection: ", indexComputerSelection);
         console.log("player selection:", indexPlayerSelection);
-        let gameResult= playRound(indexPlayerSelection, indexComputerSelection);
+        let gameResult = playRound(indexPlayerSelection, indexComputerSelection);
 
         playerScore += gameResult.playerPoint;
         computerScore += gameResult.computerPoint;
         console.log("player: ", playerScore);
         console.log("computer: ", computerScore);
 
-        console.log('..',messages[gameResult.messageIndex]);
+        console.log('..', messages[gameResult.messageIndex]);
         console.log(gameResult.messageIndex);
         console.log(gameResult.playerPoint, options[gameResult.computerPoint])
     }
