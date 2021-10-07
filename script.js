@@ -6,12 +6,20 @@ let computerScore = 0
 
 //Event listener to the buttons
 userOptions = [...document.getElementsByClassName("option")];
+DOCscore = document.getElementById("points");
+
+
 
 userOptions.forEach(option => {
     option.addEventListener('click', () => {
         console.log("clicked", option.id, options.indexOf(option.id))
         chooseOption(option.id);
         game()
+        option.classList.add("unclickable")
+        setTimeout(() => {
+            option.classList.remove("unclickable")
+            returnCards();
+        }, 1000);
     }
     
     )
@@ -33,6 +41,12 @@ function chooseOption(choosed) {
         }
     })
     
+}
+
+function returnCards() {
+    userOptions.forEach(option => {
+        option.style.display="flex"
+    })
 }
 
 /**
@@ -81,43 +95,34 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
 
-    if (playerScore >= 5 || computerScore >= 5) {
-        console.log("end, somebody won")
+    if (playerScore >= 4) {
+        console.log("end, somebody won");
+        DOCscore.innerHTML = "<h1>YOU WIN</h1>"
+    }
+    else if (computerScore >= 4) {
+      console.log("end, somebody won")
+      DOCscore.innerHTML = "<h1>YOU LOSE</h1>"
     }
     else {
-        indexComputerSelection = computerPlay();
-        console.log("computer selection: ", indexComputerSelection);
-        console.log("player selection:", indexPlayerSelection);
-        let gameResult = playRound(indexPlayerSelection, indexComputerSelection);
+      indexComputerSelection = computerPlay()
+      console.log("computer selection: ", indexComputerSelection)
+      console.log("player selection:", indexPlayerSelection)
+      let gameResult = playRound(indexPlayerSelection, indexComputerSelection)
 
-        playerScore += gameResult.playerPoint;
-        computerScore += gameResult.computerPoint;
-        console.log("player: ", playerScore);
-        console.log("computer: ", computerScore);
+      playerScore += gameResult.playerPoint
+      computerScore += gameResult.computerPoint
+      console.log("player: ", playerScore)
+      console.log("computer: ", computerScore)
+      DOCscore.innerHTML = "<h1>"+playerScore + " - " + computerScore+"</h1>"
 
-        console.log('..', messages[gameResult.messageIndex]);
-        console.log(gameResult.messageIndex);
-        console.log(gameResult.playerPoint, options[gameResult.computerPoint])
+      console.log("..", messages[gameResult.messageIndex])
+      console.log(gameResult.messageIndex)
+      console.log(
+        options[indexPlayerSelection],
+        options[indexComputerSelection]
+      )
     }
 }
 
-
-
-
-  /*
-    for (let index = 0; index < 5; index++) {
-        playerSelection = prompt("Your turn").toLowerCase()
-        computerSelection = computerPlay()
-        message,pPlayer,pComputer=playRound(playerSelection, computerSelection)
-        playerScore += pPlayer
-        computerScore += pComputer
-
-        if (message >= 2) {
-            index--
-        }
-
-        console.log(messages[message])
-        console.log(playerSelection,options[computerSelection])
-}*/
 
 

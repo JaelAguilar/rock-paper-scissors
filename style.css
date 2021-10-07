@@ -12,9 +12,11 @@ body{
   background-color:black;
 }
 
-.points{
+#points{
   display:flex;
   justify-content: center;
+  color:red;
+  background-color:black;
 }
 
 .options {
@@ -63,4 +65,8 @@ body{
 h1{
   color:white;
   align-self: center;
+}
+
+.unclickable { 
+  pointer-events: none; 
 }
