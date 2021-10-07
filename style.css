@@ -1,10 +1,20 @@
 html {
   background-color: black !important;
 }
-body {
+#panel {
+  padding:30px;
   display: flex;
   align-items: center;
   justify-content:center;
+  background-color: black !important;
+}
+body{
+  background-color:black;
+}
+
+.points{
+  display:flex;
+  justify-content: center;
 }
 
 .options {
@@ -12,14 +22,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 70vh;
   width: 40vw;
-  background-color: blue;
+  /*background-color: blue;*/
 }
 
 
 
-.option.player, #computer-choice {
+.option.player, .option.computer {
     display:flex;
     justify-content:center;
     align-items:center;
@@ -40,8 +50,17 @@ body {
 
 .option-symbol{
     height:70%;
+    width:auto !important;
+    max-width: 90%;
+}
+
+.title{
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 h1{
   color:white;
+  align-self: center;
 }

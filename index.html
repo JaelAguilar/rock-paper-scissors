@@ -7,31 +7,42 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 </head>
 <body>
+    <div id="panel">
     <div id="player">
+        <div class="title player">
         <h1>Human</h1>
+        </div>
     <div class="options player">
-        <div id="rock" class="option player">
-            <img class="option-symbol" src="./rock.png" alt="rock">
+        <div class="card option player">
+            <img src="./rock.png" class="card-img-top option-symbol" alt="rock">
         </div>
-        <div id="paper" class="option player">
-            <img class="option-symbol" src="./paper.png" alt="paper">
+
+        <div class="card option player">
+            <img src="./paper.png" class="card-img-top option-symbol" alt="paper">
         </div>
-        <div id="scissors" class="option player">
-            <img class="option-symbol" src="./scissors.png" alt="scissors">
+        <div class="card option player">
+            <img src="./scissors.png" class="card-img-top option-symbol" alt="scissors">
         </div>
     </div>
+ 
     </div>
     <div id="vs"><h1>vs</h1></div>
     <div id="computer">
-
+         <div class="title computer">
         <h1>Computer</h1>
-        <div class="options">
-            <div id="computer-choice"></div>
+    </div>
+        <div class="options computer">
+            <div class="card option computer">
+            <img src="./rock.png" class="card-img-top option-symbol" alt="rock">
+        </div>
         </div>
         
     </div>
+    </div>
+    <div class="points player" style="color:red"><h1 style="color:red">1-0</h1></div>
 
     <!--Link de créditos por las imágenes
         <div id="credits"><a href="https://www.vecteezy.com/free-vector/bavaria">Bavaria Vectors by Vecteezy</a></div> -->
