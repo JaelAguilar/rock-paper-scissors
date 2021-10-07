@@ -70,3 +70,7 @@ h1{
 .unclickable { 
   pointer-events: none; 
 }
+
+.white{
+  display:none;
+}

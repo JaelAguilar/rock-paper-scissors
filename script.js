@@ -7,7 +7,7 @@ let computerScore = 0
 //Event listener to the buttons
 userOptions = [...document.getElementsByClassName("option")];
 DOCscore = document.getElementById("points");
-
+computerCard = document.getElementById("computer-choosed");
 
 
 userOptions.forEach(option => {
@@ -17,6 +17,7 @@ userOptions.forEach(option => {
         game()
         option.classList.add("unclickable")
         setTimeout(() => {
+            computerCard.classList.add("white")
             option.classList.remove("unclickable")
             returnCards();
         }, 1000);
@@ -55,7 +56,9 @@ function returnCards() {
  * @return {int} The random result from 0 to 2 that corresponds to the choosed option of the computer
  */
 function computerPlay() {
-  choosed = Math.floor(Math.random() * 3)
+    choosed = Math.floor(Math.random() * 3);
+    computerCard.classList.remove("white");
+    computerCard.src = "./"+options[choosed]+".png";
   return choosed
 }
 
